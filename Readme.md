@@ -2,3 +2,8 @@ Seldon - an open source platform to deploy your machine learning models on Kuber
 
 
 ![Architeture](images/seldon-core-high-level.jpg)
+
+
+Concept:
+
+    Seldon core converts your ML models (Tensorflow, Pytorch, H2o, etc.) or language wrappers (Python, Java, etc.) into production REST/GRPC microservices.
