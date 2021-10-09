@@ -4,7 +4,7 @@ Seldon - an open source platform to deploy your machine learning models on Kuber
 ![Architeture](images/seldon-core-high-level.jpg)
 
 
-Concept:
+Concept
 
 <code>
 <i><b>Seldon</b> core converts your ML models into production ready REST/gRPC microservices.</i>
@@ -26,3 +26,7 @@ Concept:
         2. Metrics with Prometheus
         3. Tracing with Jaeger
         4. Endpoint Documentation with OpenApi (swagger)
+
+E2E Serving with Model Servers
+
+![E2E](images/e2e-model-serving.svg)
