@@ -1,7 +1,7 @@
 Installtion seldon-core
 
 
-Pre-requirements
+Required components
 
     1. Istio
     2. seldon core
@@ -69,6 +69,29 @@ uninstall istio-control-plane (If Required)
 kubectl delete -f istio-control-plane.yml
 or
 kubectl delete iop -n istio-system istio-control-plane
+
+```
+
+
+seldon core installation
+
+```bash
+
+helm repo add seldonio https://storage.googleapis.com/seldon-charts
+helm repo update
+
+```
+
+seldon values yaml
+
+```bash
+
+kubectl create ns seldon-system
+helm upgrade seldon-core seldonio/seldon-core-operator \
+    --version 1.9.1 \
+    -f values.yml
+    --namespace seldon-system \
+    --install
 
 ```
 
