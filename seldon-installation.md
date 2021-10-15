@@ -1,4 +1,15 @@
-Installtion seldon-core
+Seldon Architecture
+
+
+![Architecture](images/seldon-rchitecture.png)
+
+
+
+
+
+
+
+
 
 
 Required components
