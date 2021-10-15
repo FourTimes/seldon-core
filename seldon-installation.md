@@ -27,7 +27,7 @@ Istio Opearator installation process
 
 ```
 
-Uninstall the control-plane
+Uninstall the control-plane (If Required)
 
 ```bash
 istioctl operator remove
