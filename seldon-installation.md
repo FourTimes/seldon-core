@@ -316,7 +316,7 @@ spec:
     - "*"
 
 ```
+seldon-deploy UI output
 
-
-
+![output](images/seldon-deploy.png)
 
