@@ -85,6 +85,7 @@ helm repo update
 seldon-core-values yml preparation
 
 ```yml
+
 # vim seldon-core-values.yml
 # helm get values -a seldon-core
 ambassador:
@@ -241,5 +242,81 @@ kubectl create ns seldon-system
 helm upgrade seldon-core seldonio/seldon-core-operator --version 1.9.1 -f seldon-core-values.yml --namespace seldon-system --install
 
 ```
+
+seldon deploy configuration
+
+```bash
+TAG=1.3.0 && \
+    docker create --name=tmp-sd-container seldonio/seldon-deploy-server:$TAG && \
+    docker cp tmp-sd-container:/seldon-deploy-dist/seldon-deploy-install.tar.gz . && \
+    docker rm -v tmp-sd-container
+
+tar -xzf seldon-deploy-install.tar.gz
+
+kubectl create ns seldon-logs
+helm upgrade seldon-deploy ./seldon-deploy-install/sd-setup/helm-charts/seldon-deploy/ \
+    --set image.image=seldonio/seldon-deploy-server:1.3.0 \
+    --set virtualService.create=false \
+    --set requestLogger.create=false \
+    --set gitops.argocd.enabled=false \
+    --set elasticsearch.basicAuth=false \
+    --set enableAppAuth=false \
+    --namespace=seldon-system \
+    --install
+
+```
+seldon deploy output
+
+```bash
+
+export POD_NAME=$(kubectl get pods --namespace seldon-system -l "app.kubernetes.io/name=seldon-deploy,app.kubernetes.io/instance=seldon-deploy" -o jsonpath="{.items[0].metadata.name}")
+echo "Visit http://127.0.0.1:8000/seldon-deploy/ to use your application"
+kubectl port-forward $POD_NAME 8000:8000 --namespace seldon-system
+
+```
+
+seldon deploy connect via istio
+
+```yml
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: seldon-deploy
+  namespace: seldon-system
+spec:
+  gateways:
+  - seldon-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /seldon-deploy/
+    route:
+    - destination:
+        host: seldon-deploy
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: seldon-gateway
+  namespace: seldon-system
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+
+```
+
+
 
 
