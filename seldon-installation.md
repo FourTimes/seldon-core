@@ -23,7 +23,14 @@ Istio Opearator installation process
 ```bash
 
  istioctl operator init
+ kubectl get all -n istio-operator
 
+```
+
+Uninstall the control-plane
+
+```bash
+istioctl operator remove
 ```
 
 
@@ -31,18 +38,37 @@ Istio control-plane installation
 
 ```bash
 
-kubecl create ns istio-system
+kubectl create ns istio-system
 
 ```
 
 ```yml
-
+# vim istio-control-plane.yml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
   namespace: istio-system
-  name: istiocontrolplane
+  name: istio-control-plane
 spec:
   profile: demo
   
 ```
+
+```bash
+
+vim istio-control-plane.yml
+kubectl apply -f istio-control-plane.yml
+
+```
+
+uninstall istio-control-plane (If Required)
+
+```bash
+
+kubectl delete -f istio-control-plane.yml
+or
+kubectl delete iop -n istio-system istio-control-plane
+
+```
+
+
