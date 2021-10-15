@@ -39,6 +39,7 @@ Istio control-plane installation
 ```bash
 
 kubectl create ns istio-system
+istioctl profile list
 
 ```
 
