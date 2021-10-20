@@ -39,8 +39,6 @@ tar -xzf seldon-deploy-install.tar.gz
 
 cd seldon-deploy-install
 ./check-config
-
-cd seldon-deploy-install
 ./prerequisites-setup/default-setup.sh
 ./sd-setup/sd-install-default
 
