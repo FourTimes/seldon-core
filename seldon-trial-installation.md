@@ -27,11 +27,6 @@ ENABLE_AUDIT=true                         # If true will setup a fluentd instanc
  Use the following script to check or create an initial file to fill in.
 
 ```bash
-
-cd seldon-deploy-install
-./check-config
-
-
 # Default Trial Installation¶
 
 TAG=1.4.0 && \
@@ -41,6 +36,9 @@ TAG=1.4.0 && \
 
 tar -xzf seldon-deploy-install.tar.gz
 
+
+cd seldon-deploy-install
+./check-config
 
 cd seldon-deploy-install
 ./prerequisites-setup/default-setup.sh
