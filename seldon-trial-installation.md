@@ -1,8 +1,13 @@
 seldon trial installtion steps
 
-sudo apt install apache2-utils
-mkdir -p ${HOME}/.config/seldon/seldon-deploy/
-vim ${HOME}/.config/seldon/seldon-deploy/sdconfig.txt
+packeges
+
+	sudo apt install apache2-utils
+
+input files
+
+	mkdir -p ${HOME}/.config/seldon/seldon-deploy/
+	vim ${HOME}/.config/seldon/seldon-deploy/sdconfig.txt
 
 ```txt
 
