@@ -2,11 +2,11 @@ seldon trial installtion steps
 
 pre-req:
 
-	kube config file for eks cluster
+	kube-config file for eks cluster
 	kubectl
 	docker 
 	git
-	herlm
+	helm
 
 packeges
 
