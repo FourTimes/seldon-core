@@ -1,6 +1,7 @@
 seldon trial installtion steps
 
-pre-req:
+pre-req:  
+	# 3.140.17.230
 
 	kube-config file for eks cluster
 	kubectl
