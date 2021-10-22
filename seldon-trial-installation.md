@@ -1,5 +1,11 @@
 seldon trial installtion steps
 
+pre-req:
+
+	kube config file for eks cluster
+	kubectl
+	docker 
+
 packeges
 
 	sudo apt install apache2-utils
