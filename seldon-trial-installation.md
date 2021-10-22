@@ -5,6 +5,8 @@ pre-req:
 	kube config file for eks cluster
 	kubectl
 	docker 
+	git
+	herlm
 
 packeges
 
